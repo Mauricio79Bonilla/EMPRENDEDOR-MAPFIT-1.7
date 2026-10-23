@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="es" class="w-done w-splashed">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ficha de salud — MAPFIT</title>
 <link rel="stylesheet" href="estilo.css">
 <style>
@@ -293,7 +292,6 @@
   .plan-badge { font-size: 0.88rem; padding: 6px 16px; }
 }
 
-#planes .wrap { text-align: center; }
 .planes-panel .section-head {
   border: none;
   padding: 0 0 10px;
@@ -627,6 +625,7 @@
 }
 </style>
 <link rel="stylesheet" href="ficha.css">
+<link rel="stylesheet" href="movil.css">
 </head>
 <body class="ficha-page">
 
@@ -645,6 +644,10 @@
       </span>
       <span class="logo sidebar-text">MAPFIT</span>
       <span class="tagline sidebar-text">Tu ruta hacia una vida saludable</span>
+    </a>
+
+    <a href="#perfil" class="back-link" data-abrir-perfil>
+      <span class="nav-ico">👤</span><span class="nav-lbl sidebar-text">Usuario</span>
     </a>
 
     <a href="mapfit.html" class="back-link">
@@ -752,84 +755,11 @@
             </div>
             <div class="form-row">
               <div class="form-field full">
-                <label for="f-plan">Plan elegido</label>
-                <select id="f-plan" name="plan">
-                  <option value="">Aún no lo decido</option>
-                  <option>Básico</option>
-                  <option>Recuperación</option>
-                  <option>Bienestar total</option>
-                </select>
-              </div>
-            </div>
-            <div class="ficha-group">📝 Algo más</div>
-            <div class="form-row">
-              <div class="form-field full">
-                <label for="f-notas">Notas para tu médico o entrenador (opcional)</label>
-                <textarea id="f-notas" name="notas" placeholder="Lesiones previas, medicamentos, horarios disponibles, etc."></textarea>
-              </div>
-            </div>
-            <button type="submit" class="form-submit">Generar mi ficha</button>
-            <p class="form-hint">Tus datos se usan solo para armar tu ficha inicial y no se comparten con terceros.</p>
-          </form>
-
-          <div class="ficha-summary" id="fichaSummary">
-            <h4>Tu ficha inicial</h4>
-            <dl id="fichaSummaryList"></dl>
-            <div class="ficha-summary-actions">
-              <a href="mapfit.html" class="btn-ghost">🏠 Volver al inicio</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal" id="contacto-correo">
-    <div class="mail-section">
-      <div class="mail-card">
-        <div class="mail-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
-        </div>
-        <h2>Envíanos un correo</h2>
-        <p>¿Tienes dudas sobre tu ficha o los planes? Escríbenos y nuestro equipo te responderá lo antes posible.</p>
-        <form class="mail-form" id="mailForm">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="m-nombre">Tu nombre</label>
-              <input type="text" id="m-nombre" name="nombre" placeholder="Ej. Carlos Méndez" required>
-            </div>
-            <div class="form-field">
-              <label for="m-email">Tu correo electrónico</label>
-              <input type="email" id="m-email" name="email" placeholder="tucorreo@ejemplo.com" required>
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="m-asunto">Asunto</label>
-            <input type="text" id="m-asunto" name="asunto" placeholder="Ej. Consulta sobre el plan Recuperación" required>
-          </div>
-          <div class="form-field">
-            <label for="m-mensaje">Mensaje</label>
-            <textarea id="m-mensaje" name="mensaje" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea>
-          </div>
-          <div class="mail-actions">
-            <button type="submit" class="mail-submit">
-              <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-              Enviar correo
-            </button>
-          </div>
-          <p class="mail-status" id="mailStatus">¡Gracias! Tu mensaje se ha preparado correctamente.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section id="planes">
-    <div class="wrap">
-      <details class="planes-details" id="planesDetails">
-        <summary class="planes-trigger">
-          <span class="planes-trigger-eyebrow">Cuotas y planes</span>
-          <span class="planes-trigger-title">Ver planes y cuotas</span>
-          <span class="planes-trigger-hint">Toca para desplegar los planes</span>
+                <label id="f-plan-label">Plan elegido</label>
+                <input type="hidden" id="f-plan" name="plan" value="">
+                <details class="planes-details" id="planesDetails">
+        <summary class="planes-trigger" aria-label="Elegir plan">
+          <span class="planes-trigger-title" id="planLabel">Aún no lo decido</span>
           <svg class="planes-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="planes-panel" id="planesPanel">
@@ -858,7 +788,7 @@
 
           <div id="plansView" data-view="cards">
           <div class="plans-grid">
-            <div class="plan-card">
+            <div class="plan-card" data-plan="Básico">
               <span class="plan-name">Básico</span>
               <div class="plan-price" data-month="$9" data-year="$90"><span class="amount">$9</span><span class="period">/ mes</span><span class="plan-note-year"></span></div>
               <p class="plan-desc">Para quienes quieren empezar a moverse y ordenar sus hábitos por su cuenta.</p>
@@ -867,10 +797,10 @@
                 <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Seguimiento de peso y actividad</li>
                 <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Rachas y logros básicos</li>
               </ul>
-              <a href="ficha.html" class="plan-cta">Elegir Básico</a>
+              <a href="#f-plan" class="plan-cta" data-plan="Básico">Elegir Básico</a>
             </div>
 
-            <div class="plan-card featured">
+            <div class="plan-card featured" data-plan="Recuperación">
               <span class="plan-badge">Más elegido</span>
               <span class="plan-name">Recuperación</span>
               <div class="plan-price" data-month="$19" data-year="$190"><span class="amount">$19</span><span class="period">/ mes</span><span class="plan-note-year"></span></div>
@@ -881,10 +811,10 @@
                 <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Gráficas de glucosa y otros indicadores</li>
                 <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Descuentos en tienda física</li>
               </ul>
-              <a href="ficha.html" class="plan-cta">Elegir Recuperación</a>
+              <a href="#f-plan" class="plan-cta" data-plan="Recuperación">Elegir Recuperación</a>
             </div>
 
-            <div class="plan-card">
+            <div class="plan-card" data-plan="Bienestar total">
               <span class="plan-name">Bienestar total</span>
               <div class="plan-price" data-month="$29" data-year="$290"><span class="amount">$29</span><span class="period">/ mes</span><span class="plan-note-year"></span></div>
               <p class="plan-desc">Para quienes ya superaron la etapa crítica y quieren sostener el estilo de vida.</p>
@@ -894,7 +824,7 @@
                 <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Caja mensual de productos naturales</li>
                 <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Atención prioritaria en tienda</li>
               </ul>
-              <a href="ficha.html" class="plan-cta">Elegir Bienestar</a>
+              <a href="#f-plan" class="plan-cta" data-plan="Bienestar total">Elegir Bienestar</a>
             </div>
           </div>
 
@@ -971,9 +901,9 @@
                 </tr>
                 <tr class="table-cta">
                   <th></th>
-                  <td><a href="ficha.html" class="plan-cta">Elegir Básico</a></td>
-                  <td class="col-featured"><a href="ficha.html" class="plan-cta">Elegir Recuperación</a></td>
-                  <td><a href="ficha.html" class="plan-cta">Elegir Bienestar</a></td>
+                  <td><a href="#f-plan" class="plan-cta" data-plan="Básico">Elegir Básico</a></td>
+                  <td class="col-featured"><a href="#f-plan" class="plan-cta" data-plan="Recuperación">Elegir Recuperación</a></td>
+                  <td><a href="#f-plan" class="plan-cta" data-plan="Bienestar total">Elegir Bienestar</a></td>
                 </tr>
               </tbody>
             </table>
@@ -982,10 +912,74 @@
           <p class="plans-note">Puedes pausar, cambiar o cancelar tu plan cuando quieras: pagas solo mientras lo usas.</p>
         </div>
       </details>
+              </div>
+            </div>
+            <div class="ficha-group">📝 Algo más</div>
+            <div class="form-row">
+              <div class="form-field full">
+                <label for="f-notas">Notas para tu médico o entrenador (opcional)</label>
+                <textarea id="f-notas" name="notas" placeholder="Lesiones previas, medicamentos, horarios disponibles, etc."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Generar mi ficha</button>
+            <p class="form-hint">Tus datos se usan solo para armar tu ficha inicial y no se comparten con terceros.</p>
+          </form>
+
+          <div class="ficha-summary" id="fichaSummary">
+            <h4>Tu ficha inicial</h4>
+            <dl id="fichaSummaryList"></dl>
+            <div class="ficha-summary-actions">
+              <a href="mapfit.html" class="btn-ghost">🏠 Volver al inicio</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
 <button class="back-to-top" id="backToTop" aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </main>
+
+  <section class="reveal" id="contacto-correo">
+    <div class="mail-section">
+      <div class="mail-card">
+        <div class="mail-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+        </div>
+        <h2>Envíanos un correo</h2>
+        <p>¿Tienes dudas sobre tu ficha o los planes? Escríbenos y nuestro equipo te responderá lo antes posible.</p>
+        <form class="mail-form" id="mailForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="m-nombre">Tu nombre</label>
+              <input type="text" id="m-nombre" name="nombre" placeholder="Ej. Carlos Méndez" required>
+            </div>
+            <div class="form-field">
+              <label for="m-email">Tu correo electrónico</label>
+              <input type="email" id="m-email" name="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="m-asunto">Asunto</label>
+            <input type="text" id="m-asunto" name="asunto" placeholder="Ej. Consulta sobre el plan Recuperación" required>
+          </div>
+          <div class="form-field">
+            <label for="m-mensaje">Mensaje</label>
+            <textarea id="m-mensaje" name="mensaje" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea>
+          </div>
+          <div class="mail-actions">
+            <button type="submit" class="mail-submit">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Enviar correo
+            </button>
+          </div>
+          <p class="mail-status" id="mailStatus">¡Gracias! Tu mensaje se ha preparado correctamente.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
 
 <footer>
   <div class="wrap footer-simple">
@@ -1127,8 +1121,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { sesion, otorgar, iniciarPerfil } from "./perfil.js";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -1140,22 +1135,28 @@
     appId: "1:450612910890:web:8a373a3e4b40872e825c53"
   };
 
-  const app = initializeApp(firebaseConfig);
+  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
+
+  iniciarPerfil();
 
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".plan-cta");
     if (!btn) return;
     e.preventDefault();
-    const plan = btn.textContent.replace("Elegir", "").trim();
-    const select = document.getElementById("f-plan");
-    if (select) {
-      const opcion = Array.from(select.options).find(o => o.text.startsWith(plan));
-      select.value = opcion ? opcion.value || opcion.text : "";
-    }
-    const form = document.getElementById("fichaForm");
-    if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
+    const plan = btn.dataset.plan || "";
+    const input = document.getElementById("f-plan");
+    const label = document.getElementById("planLabel");
+    const det = document.getElementById("planesDetails");
+    if (input) input.value = plan;
+    if (label) label.textContent = plan || "Aún no lo decido";
+    document.querySelectorAll(".planes-details .plan-card").forEach((c) => {
+      const sel = c.dataset.plan === plan;
+      c.classList.toggle("selected", sel);
+      if (sel) { c.classList.remove("plan-selecting"); void c.offsetWidth; c.classList.add("plan-selecting"); }
+    });
+    if (det) setTimeout(() => { det.open = false; }, 350);
   }, true);
 
   function aviso(texto, ok) {
@@ -1174,47 +1175,58 @@
   }
 
   let ultimoGuardado = 0;
+  let enCurso = false;
 
-  function guardarFicha() {
+  async function guardarFicha() {
     const form = document.getElementById("fichaForm");
     if (!form) return;
     if (!form.checkValidity()) {
       aviso("Ficha NO guardada: faltan campos obligatorios", false);
       return;
     }
-    const usuario = auth.currentUser;
-    if (!usuario) {
-      aviso("Inicia sesión en la página de inicio para guardar tu ficha", false);
-      return;
+    if (enCurso || Date.now() - ultimoGuardado < 3000) return;
+    enCurso = true;
+    try {
+      let usuario = auth.currentUser;
+      if (!usuario) {
+        usuario = await Promise.race([sesion().catch(() => null), new Promise((r) => setTimeout(() => r(null), 8000))]);
+      }
+      if (!usuario) {
+        aviso("No se pudo iniciar la sesión. Revisa tu conexión e intenta de nuevo.", false);
+        return;
+      }
+      ultimoGuardado = Date.now();
+
+      const fd = new FormData(form);
+      const billing = document.querySelector("[data-billing].active");
+      let correoGuardado = "";
+      try { correoGuardado = localStorage.getItem("mapfitCorreo") || ""; } catch (e) {}
+      const datos = {
+        uid: usuario.uid,
+        correoCuenta: usuario.email || correoGuardado,
+        nombre: fd.get("nombre"),
+        edad: Number(fd.get("edad")),
+        peso: Number(fd.get("peso")),
+        altura: Number(fd.get("altura")),
+        condicion: fd.get("condicion"),
+        actividad: fd.get("actividad"),
+        objetivo: fd.get("objetivo"),
+        plan: fd.get("plan") || "Sin elegir",
+        ciclo: billing && billing.dataset.billing === "year" ? "anual" : "mensual",
+        notas: fd.get("notas") || "",
+        fecha: serverTimestamp()
+      };
+
+      aviso("Guardando ficha...");
+      addDoc(collection(db, "fichas"), datos)
+        .then(() => { aviso("✓ Ficha guardada en Firebase", true); otorgar("ficha"); })
+        .catch((err) => {
+          console.error("Error al guardar la ficha:", err);
+          aviso("Error al guardar la ficha: " + err.message, false);
+        });
+    } finally {
+      enCurso = false;
     }
-    if (Date.now() - ultimoGuardado < 3000) return;
-    ultimoGuardado = Date.now();
-
-    const fd = new FormData(form);
-    const billing = document.querySelector("[data-billing].active");
-    const datos = {
-      uid: usuario.uid,
-      correoCuenta: usuario.email,
-      nombre: fd.get("nombre"),
-      edad: Number(fd.get("edad")),
-      peso: Number(fd.get("peso")),
-      altura: Number(fd.get("altura")),
-      condicion: fd.get("condicion"),
-      actividad: fd.get("actividad"),
-      objetivo: fd.get("objetivo"),
-      plan: fd.get("plan") || "Sin elegir",
-      ciclo: billing && billing.dataset.billing === "year" ? "anual" : "mensual",
-      notas: fd.get("notas") || "",
-      fecha: serverTimestamp()
-    };
-
-    aviso("Guardando ficha...");
-    addDoc(collection(db, "fichas"), datos)
-      .then(() => aviso("✓ Ficha guardada en Firebase", true))
-      .catch((err) => {
-        console.error("Error al guardar la ficha:", err);
-        aviso("Error al guardar la ficha: " + err.message, false);
-      });
   }
 
   document.addEventListener("submit", (e) => {
@@ -1239,7 +1251,7 @@
       };
 
       addDoc(collection(db, "mensajes"), { ...datos, fecha: serverTimestamp() })
-        .then(() => console.log("Mensaje guardado en Firebase"))
+        .then(() => { console.log("Mensaje guardado en Firebase"); otorgar("mensaje"); })
         .catch((err) => {
           console.error("Error al guardar el mensaje:", err);
           aviso("Firebase no guardó el mensaje: " + err.message, false);

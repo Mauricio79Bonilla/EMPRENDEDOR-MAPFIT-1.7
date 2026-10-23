@@ -2,11 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MAPFIT — Tu ruta hacia una vida saludable</title>
 <script>try{var d=document.documentElement,s=sessionStorage;if(s.getItem("mapfitRegistrado"))d.classList.add("w-done");if(s.getItem("mapfitSplash"))d.classList.add("w-splashed")}catch(e){}</script>
 <link rel="stylesheet" href="estilo.css">
 <link rel="stylesheet" href="bienvenida.css">
+<link rel="stylesheet" href="detalles.css">
+<link rel="stylesheet" href="bienvenida-pro.css">
+<link rel="stylesheet" href="movil.css">
+<link rel="stylesheet" href="visor.css">
 <style>
 .reveal { opacity: 1 !important; transform: none !important; }
 #regCard .w-ok { display: none; }
@@ -30,6 +34,16 @@
 <div id="welcome" class="welcome" role="dialog" aria-modal="true" aria-labelledby="wTitle">
   <div class="w-orb o1"></div>
   <div class="w-orb o2"></div>
+  <div class="w-deco" aria-hidden="true">
+    <span class="wd-grid"></span>
+    <span class="wd-ring r1"></span>
+    <span class="wd-ring r2"></span>
+    <span class="wd-dot d1"></span>
+    <span class="wd-dot d2"></span>
+    <span class="wd-dot d3"></span>
+    <span class="wd-dot d4"></span>
+    <span class="wd-dot d5"></span>
+  </div>
   <div class="w-shell">
     <aside class="w-brand">
       <img src="logo.jpeg" alt="Logo MAPFIT" class="w-logo">
@@ -114,6 +128,7 @@
       <a href="#anexos" class="nav-link"><span class="nav-ico">📎</span><span class="nav-lbl sidebar-text">Anexos</span></a>
       <a href="#cronograma" class="nav-link"><span class="nav-ico">📅</span><span class="nav-lbl sidebar-text">Cronograma</span></a>
       <a href="#organigrama" class="nav-link"><span class="nav-ico">🏛️</span><span class="nav-lbl sidebar-text">Organigrama</span></a>
+      <a href="#perfil" class="nav-link" data-abrir-perfil><span class="nav-ico">👤</span><span class="nav-lbl sidebar-text">Usuario</span></a>
       <a href="#contacto" class="nav-cta nav-link"><span class="nav-ico">📞</span><span class="nav-lbl sidebar-text">Contáctanos</span></a>
     </nav>
   </div>
@@ -140,7 +155,7 @@
         <div class="route-title">De la primera ficha a la recuperación</div>
         <svg class="route-svg" viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
           <path d="M20 190 C 100 190, 90 90, 160 90 S 240 190, 300 130 S 400 40, 440 40"
-                fill="none" stroke="#61BDDC" stroke-cwidth="3" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+                fill="none" stroke="#61BDDC" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
           <g>
             <circle cx="20" cy="190" r="9" fill="#E2662D"/>
             <text x="20" y="212" text-anchor="middle" class="route-stop-num">01</text>
@@ -265,9 +280,10 @@ En consecuencia, los beneficiados de MAPFIT serán los usuarios que busquen mejo
         <div class="mv-card reveal">
           <span class="mono"></span>
           <h2>📱 Visión.</h2>
-         <p>Crear una aplicación móvil que ofrezca un servicio completo de rehabilitación y monitoreo de la salud general de los usuarios, adaptándose a sus necesidades mediante encuestas en las que se les pide especificar cuál es la enfermedad que padecen, para ofrecerles un plan de servicio personalizado con cuotas accesibles de pago, por el tiempo que ellos mismos estimen necesario.
-A futuro, aspiramos a convertirla en una aplicación multiplataforma, disponible en distintos dispositivos y sistemas, para llegar a más personas. </p>
+         <p>Crear una aplicación móvil que ofrezca un servicio completo de rehabilitación y monitoreo de la salud general de los usuarios, adaptándose a sus necesidades mediante encuestas en las que se le pide al usuario que especifique cuál es la enfermedad que padece, ofreciéndoles un plan de servicio personalizado con cuotas accesibles de pago por el tiempo que estimen los usuarios, además de convertirla en una app multiplataforma, a la par de la construcción de establecimientos de servicio al cliente para una mejor experiencia.</p>
       </div>
+    </div>
+  </div>
    
   </section>
 
@@ -386,39 +402,13 @@ A futuro, aspiramos a convertirla en una aplicación multiplataforma, disponible
 
   
 
-  <section id="contacto" class="reveal">
-    <div class="wrap">
-      <div class="cta-band">
-        <h2>Empieza tu recorrido con MAPFIT hoy.</h2>
-        <p class="cta-sub">Llena tu ficha de salud y recibe una propuesta inicial de rutina y alimentación. Si prefieres, escríbenos y te acompañamos en el proceso.</p>
-        <div class="cta-actions">
-          <a href="ficha.html" class="btn-primary">Llenar mi ficha de salud</a>
-          <a href="https://wa.me/50371351565" target="_blank" rel="noopener" class="btn-ghost">Escribir por WhatsApp</a>
-        </div>
-        <div class="cta-contact">
-          <a class="cta-contact-item" href="https://wa.me/50371351565" target="_blank" rel="noopener">
-            <span>WhatsApp</span><span>+503 7135 1565</span>
-          </a>
-          <a class="cta-contact-item" href="mailto:contacto@mapfit.com">
-            <span>Correo</span><span>contacto@mapfit.com</span>
-          </a>
-          <a class="cta-contact-item" href="https://instagram.com/mapfit" target="_blank" rel="noopener">
-            <span>Instagram</span><span>@mapfit</span>
-          </a>
-          <a class="cta-contact-item" href="https://facebook.com/MAPFITOficial" target="_blank" rel="noopener">
-            <span>Facebook</span><span>MAPFIT Oficial</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
 <button class="back-to-top" id="backToTop" aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </main>
 
 <footer>
-  <div class="wrap footer-simple">
+  <div class="wrap footer-simple" id="contacto">
     <div class="footer-social">
       <a class="social-item" href="ficha.html">
         <div class="social-circle" style="background:var(--ember);border-color:var(--ember);">
@@ -453,10 +443,12 @@ A futuro, aspiramos a convertirla en una aplicación multiplataforma, disponible
 </footer>
 
 <script src="script.js"></script>
+<script src="visor.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { iniciarPerfil, otorgar } from "./perfil.js";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -468,8 +460,10 @@ A futuro, aspiramos a convertirla en una aplicación multiplataforma, disponible
     appId: "1:450612910890:web:8a373a3e4b40872e825c53"
   };
 
-  const app = initializeApp(firebaseConfig);
+  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
   const db = getFirestore(app);
+
+  iniciarPerfil();
 
   function aviso(texto, ok) {
     let el = document.getElementById("estadoFirebase");
@@ -558,6 +552,8 @@ A futuro, aspiramos a convertirla en una aplicación multiplataforma, disponible
     msg("Guardando tus datos...");
     try {
       await addDoc(collection(db, "usuarios"), { nombre, apellido, correo, tipoDocumento: tipoDoc, documento, creado: serverTimestamp() });
+      try { localStorage.setItem("mapfitCorreo", correo); } catch (e) {}
+      otorgar("registro", { nombre, apellido, correo });
       $("regOkTitle").textContent = "¡Bienvenido, " + nombre + "!";
       $("regCard").classList.add("done");
       avisarPersonal(correo);

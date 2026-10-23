@@ -65,8 +65,6 @@ if (nav) {
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     if (window.innerWidth <= 900) {
       document.body.classList.remove('sidebar-overlay');
-      sidebar.classList.add('collapsed');
-      document.body.classList.add('sidebar-collapsed');
     }
   }));
 }

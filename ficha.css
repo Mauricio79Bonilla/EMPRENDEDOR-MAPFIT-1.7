@@ -54,3 +54,20 @@ main .planes-panel .plan-features li{text-align:left;text-align-last:left;hyphen
 main .planes-panel .plan-cta{display:flex;align-items:center;justify-content:center;min-height:4.4rem;padding:12px 14px;text-align:center;text-align-last:center;line-height:1.25}
 main .ficha-step{text-align:left;text-align-last:left;hyphens:none}
 main .ficha-intro p,main .ficha-form-head p{text-align:left;text-align-last:left;hyphens:none}
+
+/* ===== Planes integrados dentro del formulario ===== */
+main .ficha-form .planes-details{max-width:none;margin:0;width:100%}
+main .ficha-form .planes-details>summary{flex-direction:row;justify-content:space-between;align-items:center;gap:12px;max-width:none;margin:0;padding:12px 16px;text-align:left;border:1.5px solid rgba(203,213,225,.5);border-radius:12px;background:rgba(1,7,32,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.1);transform:none;-webkit-tap-highlight-color:transparent}
+main .ficha-form .planes-details>summary:hover{transform:none;border-color:#e8edf3;background:rgba(1,7,32,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+main .ficha-form .planes-details[open]>summary,main .ficha-form .planes-details>summary:focus-visible{border-color:#F97316;box-shadow:0 0 0 4px rgba(249,115,22,.3),0 0 26px rgba(249,115,22,.35);outline:none}
+main .ficha-form .planes-trigger-title{font-family:inherit;font-size:1rem;font-weight:600;line-height:1.3;text-align:left}
+main .ficha-form .planes-chevron{width:20px;height:20px;margin:0;flex:none;stroke:#F97316}
+main .ficha-form .planes-panel{margin-top:20px}
+main .ficha-form .planes-panel .section-head{margin-bottom:18px}
+main .ficha-form .planes-panel .section-head h2{font-size:1.25rem;line-height:1.35}
+main .ficha-form .planes-panel .section-head p{font-size:.92rem;line-height:1.55;text-align:center}
+main .ficha-form .plans-toolbar{margin:4px auto 24px;gap:14px}
+main .ficha-form .plans-grid{grid-template-columns:1fr;max-width:none;gap:22px}
+main .ficha-form .plan-card.selected{border-color:#F97316;box-shadow:0 0 0 2px rgba(249,115,22,.7),0 0 36px rgba(249,115,22,.45)}
+main .ficha-form .plans-table-wrap{max-width:100%}
+main .ficha-form .plans-note{font-size:.9rem;text-align:center}
